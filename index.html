@@ -12,57 +12,82 @@
   <link rel="stylesheet" href="css/main.css">
 </head>
 
+<!-- I added both the main content skip link and nav skip link, then connected
+ them to both the main and nv page -->
+
 <body>
+  <a href="#main-content" aria-label="Skip to main content" class="skip-link">Skip to main content</a>
+  <a href="#main-nav" class="skip-link">Skip to navigation</a>
   <div class="container">
-    <div class="site-header">
-      <h1>Jam Box Studios</h1>
-      <div class="main-nav">
+    <header role="banner" class="site-header">
+      <h1 role="heading">Jam Box Studios</h1>
+      <nav role="navigation" class="main-nav">
         <ul>
-          <li><a href="#">Home</a></li>
-          <li><a href="#">Products</a></li>
-          <li><a href="#">Reservation</a></li>
-          <li><a href="#">Studio</a></li>
+          <li><a href="#" aria-label="Go to the home page">Home</a></li>
+          <li><a href="#" aria-label="Go to the products page">Products</a></li>
+          <li><a href="#" aria-label="Go to the reservation page">Reservation</a></li>
+          <li><a href="#" aria-label="Go to the studio page">Studio</a></li>
         </ul>
-      </div>
-      <img src="https://placekitten.com/1200/900" class="banner">
-    </div>
-    <div class="main-content">
-      <h1>Welcome to Jam Box</h1>
+      </nav>
+
+      <!-- The image provided wasn't working so I put my own photo in it. -->
+
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDKKNSeOMKPcSUvY7o5jzk_oWUj7ZmanhrLw&s" class="banner" alt="Banner image of a kitten">
+    </header>
+
+    <!-- Aria role for the main -->
+
+    <main role="main" id="main-content">
+      <h2 role="heading">Welcome to Jam Box</h2>
       <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Temporibus laboriosam praesentium nostrum ipsa eveniet, officia deserunt cumque eius esse enim, ipsam accusantium autem nihil quaerat sequi perferendis optio quia veritatis.</p>
       <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Veniam perferendis expedita sed itaque odit ipsam omnis, eos voluptates magni fugit culpa voluptatibus, inventore eaque, eligendi voluptatum! Voluptate iusto error voluptatibus.</p>
-      <div class="owner">
-        <h1>Meet the owner</h1>
+
+      <!-- I apply the schemas here for both person and organization -->
+
+      <div class="owner" itemscope itemtype="https://schema.org/Person">
+        <h2>Meet the owner</h2>
         <ul>
-          <li>Name: John Doe</li>
-          <li>Title: CEO</li>
-          <li>Email: johnjoe@jambox.ca</li>
-          <li>Phone: 613-000-0000</li>
+          <li>Name: <span itemprop="name">John Doe</span></li>
+          <li>Title: <span itemprop="jobTitle">CEO</span></li>
+          <li>Email: <span itemprop="email">johnjoe@jambox.ca</span></li>
+          <li>Phone: <span itemprop="telephone">613-000-0000</span></li>
         </ul>
-        <h1>Address</h1>
-        <p>
-          Jambox Studios
-          123 Guitar Road,
-          Musicville, Danceistan
-          B3T 0L0
+
+        <!-- Aria role for the headers -->
+
+        <h2 role="heading" >Address</h2>
+        <p itemprop="address" itemscope itemtype="https://schema.org/Organization">
+          <span itemprop="legalName">Jambox Studios</span>
+          <span itemprop="address">123 Guitar Road,</span>
+          <span itemprop="location">Musicville, Danceistan</span>
+          <span itemprop="address">B3T 0L0</span>
         </p>
       </div>
       <div class="contact-section">
-        <h1>Contact Us</h1>
+
+        <!-- Aria role for the headers -->
+
+        <h2 role="heading">Contact Us</h2>
         <form action="thanks.html">
-          <label>Full Name</label>
-          <input type="text" placeholder="Full Name">
-          <input type="text" placeholder="Email">
-          <input type="text" placeholder="Subject">
+          <label for="full-name">Full Name</label>
+          <input type="text" id="full-name" placeholder="Full Name">
+          <label for="email-address">Email</label>
+          <input type="text" id="email-address" placeholder="Email">
+          <label for="message-subject">Subject</label>
+          <input type="text" id="message-subject" placeholder="Subject">
           <b>Your Message</b>
-          <textarea></textarea>
+          <textarea aria-labelledby="message-label"></textarea>
+          <span id="message-label" style="display:none;">Your Message</span>
           <button type="submit">Send</button>
         </form>
       </div>
-    </div>
-    <div class="site-footer">
+    </main>
+
+    <!-- Aria role for the footer -->
+
+    <footer role="contentinfo" class="site-footer">
       &copy; 2021 Jam Box Studios
-    </div>
+    </footer>
   </div>
 </body>
-
 </html>
